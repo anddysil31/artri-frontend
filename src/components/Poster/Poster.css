@@ -1,0 +1,14 @@
+.poster{
+    width: 50%;
+    height: 100vh;
+    background-color: rgba(105, 225, 225, 1);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-top-left-radius: 5%;
+}
+
+.logo{
+    border-radius: 100%;
+    box-shadow: 5px 5px rgba(100, 200, 200, 1) ;
+}
