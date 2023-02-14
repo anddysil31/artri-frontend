@@ -6,6 +6,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import Song from "./Interface/SongInterface";
 import { fetchSong, song } from "./SongService/SongService";
 import { SongAntDrawer } from "../../components/AntDrawer/SongAntDrawer";
+import axios from "axios";
 
 export const SongCRUD: React.FC  = () => {
     const columns: ColumnsType<Song> = [
@@ -38,7 +39,7 @@ export const SongCRUD: React.FC  = () => {
                     <Typography.Link onClick={()=>fieldsEdit(record)} style={{ marginRight: 8 }}>
                         Editar
                     </Typography.Link>
-                    <Typography.Link  style={{ marginRight: 8 }}>
+                    <Typography.Link  style={{ marginRight: 8 }} onClick={()=>axios.delete(`http://localhost:8081/api/song/delete/${record.id}`, {"headers":{"mode":"no-cors"}})}>
                         Eliminar
                     </Typography.Link>
 

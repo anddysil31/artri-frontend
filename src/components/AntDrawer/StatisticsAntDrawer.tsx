@@ -39,7 +39,7 @@ export const StatisticsAntDrawer: React.FC<DrawerType> = ({
   }, [fields, form]);
 
   const { trigger, isMutating } = useSWRMutation(
-    fields ? `${statistics}/${fields.id}` : statistics,
+    fields ? `${statistics}` : statistics,
     fields ? updateStatistics : createStatistics
   );
 
@@ -64,6 +64,15 @@ type FormType = {
 const FormSection: React.FC<FormType> = ({ form, loading, onFinish }) => (
   <Form layout="vertical" hideRequiredMark onFinish={onFinish} form={form}>
     <Row gutter={16}>
+    <Col span={12}>
+        <Form.Item
+          name="id"
+          label="id"
+          rules={[{ required: true, message: "Por favor ingrese el id" }]}
+        >
+          <Input placeholder="Please enter id" />
+        </Form.Item>
+      </Col>
       <Col span={12}>
         <Form.Item
           name="date"

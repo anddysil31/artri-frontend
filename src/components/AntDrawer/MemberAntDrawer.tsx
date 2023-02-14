@@ -21,6 +21,7 @@ export const MemberAntDrawer: React.FC<DrawerType> = ({open, setOpen, fields}: D
         setOpen(false);
     };
     const onFinish = async (values: Member) => {
+        values.id = Number(values.id)
         values.nickname = String(values.nickname);
         values.name = String(values.name);
         values.lastname = String(values.lastname);
@@ -37,13 +38,13 @@ export const MemberAntDrawer: React.FC<DrawerType> = ({open, setOpen, fields}: D
     }, [fields, form]);
 
     const { trigger, isMutating } = useSWRMutation(
-        fields ? `${member}/${fields.id}` : member,
+        fields ? `${member}` : member,
         fields ? updateMember : createMember
     );
 
     return (
         <Drawer
-            title="Edit"
+            title="Add New"
             width={720}
             onClose={onClose}
             open={open}
@@ -53,8 +54,6 @@ export const MemberAntDrawer: React.FC<DrawerType> = ({open, setOpen, fields}: D
         </Drawer>
     );
 };
-
-
 
 type FormType = {
  form:FormInstance;
@@ -69,6 +68,15 @@ const FormSection: React.FC<FormType> = ({ form, loading, onFinish }) => (
         form={form}
     >
         <Row gutter={16}>
+        <Col span={12}>
+                <Form.Item
+                    name="id"
+                    label="id"
+                    rules={[{ required: true, message: 'Please enter a id' }]}
+                >
+                    <Input placeholder="Please enter a id" />
+                </Form.Item>
+            </Col>
             <Col span={12}>
                 <Form.Item
                     name="nickname"
@@ -91,9 +99,9 @@ const FormSection: React.FC<FormType> = ({ form, loading, onFinish }) => (
                 <Form.Item
                     name="lastname"
                     label="Apellido"
-                    rules={[{ required: true, message: 'Please enter a episode' }]}
+                    rules={[{ required: true, message: 'Please enter a lastname' }]}
                 >
-                    <Input placeholder="Please enter a episode" />
+                    <Input placeholder="Please enter a lastname" />
                 </Form.Item>
             </Col>
          
@@ -101,9 +109,9 @@ const FormSection: React.FC<FormType> = ({ form, loading, onFinish }) => (
                 <Form.Item
                     name="age"
                     label="Edad"
-                    rules={[{ required: true, message: 'Please enter a episode' }]}
+                    rules={[{ required: true, message: 'Please enter your age' }]}
                 >
-                    <Input placeholder="Please enter a episode" />
+                    <Input placeholder="Please enter your age" />
                 </Form.Item>
             </Col>
             {/* <Col span={12}>
@@ -119,9 +127,9 @@ const FormSection: React.FC<FormType> = ({ form, loading, onFinish }) => (
                 <Form.Item
                     name="password"
                     label="Contraseña"
-                    rules={[{ required: true, message: 'Please enter a episode' }]}
+                    rules={[{ required: true, message: 'Please enter your password' }]}
                 >
-                    <Input placeholder="Please enter a episode" />
+                    <Input placeholder="Please enter your password" />
                 </Form.Item>
             </Col>
             {/* <Col span={12}>

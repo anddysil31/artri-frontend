@@ -32,7 +32,7 @@ export const SongAntDrawer: React.FC<DrawerType> = ({open, setOpen, fields}: Dra
     }, [fields, form]);
 
     const { trigger, isMutating } = useSWRMutation(
-        fields ? `${song}/${fields.id}` : song,
+        fields ? `${song}` : song,
         fields ? updateSong : createSong
     );
 
@@ -64,6 +64,15 @@ const FormSection: React.FC<FormType> = ({ form, loading, onFinish }) => (
         form={form}
     >
         <Row gutter={16}>
+            <Col span ={12} >
+                <Form.Item
+                    name="id"
+                    label="Id"
+                    rules={[{ required: true, message: 'Por favor ingrese un id' }]}
+                >
+                    <Input placeholder="Please enter id" />
+                </Form.Item>
+            </Col>
             <Col span ={12} >
                 <Form.Item
                     name="name"

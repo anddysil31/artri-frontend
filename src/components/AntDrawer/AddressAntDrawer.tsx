@@ -30,7 +30,7 @@ export const AddressAntDrawer: React.FC<DrawerType> = ({open, setOpen, fields}: 
     }, [fields, form]);
 
     const { trigger, isMutating } = useSWRMutation(
-        fields ? `${address}/${fields.id}` : address,
+        fields ? `${address}` : address,
         fields ? updateAddress : createAddress
     );
 
@@ -62,6 +62,15 @@ const FormSection: React.FC<FormType> = ({ form, loading, onFinish }) => (
         form={form}
     >
         <Row gutter={16}>
+        <Col span={12}>
+                <Form.Item
+                    name="id"
+                    label="Id"
+                    rules={[{ required: true, message: 'Por favor ingrese el id' }]}
+                >
+                    <Input placeholder="Please enter el id" />
+                </Form.Item>
+            </Col>
             <Col span={12}>
                 <Form.Item
                     name="city"

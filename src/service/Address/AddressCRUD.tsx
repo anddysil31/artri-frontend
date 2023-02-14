@@ -6,6 +6,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import Address from "./Interface/InterfaceAddress";
 import { address, fetchAddress } from "./AddressService/AddressService";
 import { AddressAntDrawer } from "../../components/AntDrawer/AddressAntDrawer";
+import axios from "axios";
 
 
 
@@ -40,7 +41,8 @@ export const AddressCRUD: React.FC  = () => {
                     <Typography.Link onClick={()=>fieldsEdit(record)} style={{ marginRight: 8 }}>
                         Editar
                     </Typography.Link>
-                    <Typography.Link  style={{ marginRight: 8 }}>
+                    <Typography.Link  style={{ marginRight: 8 }}
+                    onClick={()=>axios.delete(`http://localhost:8081/api/address/delete/${record.id}`, {"headers":{"mode":"no-cors"}})}>
                         Eliminar
                     </Typography.Link>
 

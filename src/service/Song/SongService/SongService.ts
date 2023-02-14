@@ -17,6 +17,6 @@ export const createSong = async (url: string, { arg }:any) => {
 }
 
 export const updateSong = async (url: string, { arg }:any) => {
-    const response =  await axios.patch(url, arg, config)
+    const response =  await axios.put(url, arg, config)
     return response.data
 }

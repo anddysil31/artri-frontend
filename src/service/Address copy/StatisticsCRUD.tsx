@@ -9,6 +9,7 @@ import {
   statistics,
 } from "./StatisticsService/StatisticsService";
 import { StatisticsAntDrawer } from "../../components/AntDrawer/StatisticsAntDrawer";
+import axios from "axios";
 
 export const StatisticsCRUD: React.FC = () => {
   const columns: ColumnsType<Statistics> = [
@@ -48,7 +49,8 @@ export const StatisticsCRUD: React.FC = () => {
           >
             Editar
           </Typography.Link>
-          <Typography.Link style={{ marginRight: 8 }}>Eliminar</Typography.Link>
+          <Typography.Link style={{ marginRight: 8 }} onClick={()=>axios.delete(`http://localhost:8081/api/statistics/delete/${record.id}`, {"headers":{"mode":"no-cors"}})}>
+            Eliminar</Typography.Link>
         </Space>
       ),
     },
