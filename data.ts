@@ -4,7 +4,7 @@ export default {
     },
 
     player:{
-        name:'Medardo',
+        name:'Nelson',
         score: 0
     },
 

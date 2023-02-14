@@ -1,17 +1,23 @@
-import { Layout } from 'antd'
 import React from 'react'
 import Picture from '../../components/Card/Picture'
-import Navbar from '../../components/Navbar/Navbar'
 import './HomePage.css'
-const {Header,Sider, Content} = Layout 
-
+import { Image } from 'antd'
+import ArtCarousel from '../../components/Carousel/ArtCarousel'
 export default function HomePage() {
   return (
-    <Layout>
-      <Content className='content-home'>
-      <Picture image='src/assets/Logo-artri.png'/>
-      </Content>
-    </Layout>
+    <div className='content-home'>
+     <div className='image-home'>
+      <Image 
+      width={350}
+      src="/src/assets/Logo-artri.png"/>
+     </div>
+     <div className='carousel-home'>
+      <ArtCarousel firstImage='/src/assets/Infimage1.jpg' secondImage='src/assets/Infimage2.jpg'/>
+
+     </div>
+
+    </div>
+
 
   )
 }

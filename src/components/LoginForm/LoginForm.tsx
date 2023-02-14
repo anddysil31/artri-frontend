@@ -1,61 +1,56 @@
-import React from 'react';
-import { LockOutlined, UserOutlined } from '@ant-design/icons';
-import { Button, Checkbox, Form, Input } from 'antd';
-import { format } from 'mysql2';
+import axios from "axios";
+import { useEffect, useState } from "react"
+import { redirect } from "react-router-dom";
 
-export default function LoginForm(){
-  const onFinish = (values: any) => {
-    console.log('Received values of form: ', values);
-  };
+const Login = () =>{
+ const [email , setEmail] = useState('');
+ const [password, setPassword] = useState('');
+ const [tokenUser, setTokenUser] = useState('') 
 
-  const validateUsername= (username:string)=>{
-    if(username === 'alberto1'){
-        return
-    }
-  }
+//  const handleSubmit = async(e:any) =>{
+//   e.preventDefault();
 
+//   const response = await axios.post('http://localhost:8081/api/v1/auth/authenticate',{email, password})
+
+//   if(response.request){
+//     try{
+//     const {token} = await response.data
+//     localStorage.setItem('token', token)
+  
+//   }
+//     catch(err) { console.log(err)}
+//   }
+ 
+//  }
   return (
-    <Form
-      name="normal_login"
-      className="login-form"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      
-    >
-      <Form.Item
-        name="username"
-        rules={[{ required: true, message: 'Please input your Username!' }]}
-       
-      >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-      </Form.Item>
-      <Form.Item
-        name="password"
-        rules={[{ required: true, message: 'Please input your Password!' }]}
-      >
-        <Input
-          prefix={<LockOutlined className="site-form-item-icon" />}
-          type="password"
-          placeholder="Password"
-        />
-      </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
+    <div>
 
-        <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
-      </Form.Item>
 
-      <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
-        </Button>
-        Or <a href="">register now!</a>
-      </Form.Item>
-    </Form>
+      {/* <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form> */}
+    </div>
   );
+  
 };
 
+
+export default Login;
